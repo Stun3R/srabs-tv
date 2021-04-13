@@ -45,25 +45,25 @@ export const state = () => ({
       games: [
         {
           name: 'valorant',
-          color: '#dc3d4b',
+          color: 'bg-[#dc3d4b]',
           img: 'valorant.jpeg',
           overlay: 'valorant_logo.png',
         },
         {
           name: 'minecraft',
-          color: '#477b1e',
+          color: 'bg-[#477b1e]',
           img: 'minecraft.jpeg',
           overlay: 'minecraft_logo.png',
         },
         {
           name: 'leagueoflegends',
-          color: '#24649f',
+          color: 'bg-[#24649f]',
           img: 'leagueoflegends.jpeg',
           overlay: 'leagueoflegends_logo.png',
         },
         {
           name: 'csgo',
-          color: '#e6a708',
+          color: 'bg-[#e6a708]',
           img: 'csgo.jpeg',
           overlay: 'csgo_logo.png',
         },

@@ -2,24 +2,24 @@
   <div
     v-if="isHeroVisible"
     id="hero"
-    class="flex flex-col justify-center items-center h-screen select-none"
+    class="flex flex-col items-center justify-center h-screen select-none"
   >
     <div class="text-center">
       <h3 class="text-srabs-400" style="transition: color 0.4s ease">
         Une famille pour les gouverner tous
       </h3>
-      <h1 class="font-medium text-2xl text-gray-900 mt-2">Choisit ton srab</h1>
+      <h1 class="mt-2 text-2xl font-medium text-gray-900">Choisit ton srab</h1>
     </div>
 
-    <div class="h-60 sm:h-80 md:h-112 relative flex mt-8">
+    <div class="relative flex mt-8 h-60 sm:h-80 md:h-112">
       <blob
-        class="h-60 sm:h-80 md:h-112 top-0 left-1/2 absolute fill-current text-srabs-100 z-0"
+        class="absolute top-0 z-0 fill-current h-60 sm:h-80 md:h-112 left-1/2 text-srabs-100"
         style="transition: color 0.4s ease; transform: translate(-50%, 0%)"
       />
       <transition-group
         name="flip-list"
         tag="div"
-        class="flex h-full mx-auto z-10 sm:mt-2 md:mt-6"
+        class="z-10 flex h-full mx-auto sm:mt-2 md:mt-6"
       >
         <img
           v-for="(srab, index) in srabs"
@@ -47,18 +47,14 @@
       style="transition: background-color 0.4s ease"
       @click="showSrab"
     >
-      <LoadingIcon v-show="loading" />
+      <IconsLoading v-show="loading" />
       Découvrir {{ srabs[1].nickname }}
     </div>
   </div>
 </template>
 
 <script>
-import LoadingIcon from '@/components/Icons/LoadingIcon'
 export default {
-  components: {
-    LoadingIcon,
-  },
   data() {
     return {
       scrollDone: false,
