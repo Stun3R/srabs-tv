@@ -1,0 +1,40 @@
+:root {
+  --leiksa-100: #ecb3a4;
+  --leiksa-200: #ecb3a4;
+  --leiksa-300: #e49681;
+  --leiksa-400: #dc765b;
+  --leiksa-hideout: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%23dc765b' fill-opacity='0.10'%3E%3Cpath d='M0 38.59l2.83-2.83 1.41 1.41L1.41 40H0v-1.41zM0 1.4l2.83 2.83 1.41-1.41L1.41 0H0v1.41zM38.59 40l-2.83-2.83 1.41-1.41L40 38.59V40h-1.41zM40 1.41l-2.83 2.83-1.41-1.41L38.59 0H40v1.41zM20 18.6l2.83-2.83 1.41 1.41L21.41 20l2.83 2.83-1.41 1.41L20 21.41l-2.83 2.83-1.41-1.41L18.59 20l-2.83-2.83 1.41-1.41L20 18.59z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+
+  --mirakk-100: #bfa5fa;
+  --mirakk-200: #a78bfa;
+  --mirakk-300: #9b68f1;
+  --mirakk-400: #7c3aed;
+  --mirakk-hideout: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%237c3aed' fill-opacity='0.10'%3E%3Cpath d='M0 38.59l2.83-2.83 1.41 1.41L1.41 40H0v-1.41zM0 1.4l2.83 2.83 1.41-1.41L1.41 0H0v1.41zM38.59 40l-2.83-2.83 1.41-1.41L40 38.59V40h-1.41zM40 1.41l-2.83 2.83-1.41-1.41L38.59 0H40v1.41zM20 18.6l2.83-2.83 1.41 1.41L21.41 20l2.83 2.83-1.41 1.41L20 21.41l-2.83 2.83-1.41-1.41L18.59 20l-2.83-2.83 1.41-1.41L20 18.59z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+
+  --stun3r-100: #d88181;
+  --stun3r-200: #d98282;
+  --stun3r-300: #c95051;
+  --stun3r-400: #b91c1c;
+  --stun3r-hideout: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%23b91c1c' fill-opacity='0.10'%3E%3Cpath d='M0 38.59l2.83-2.83 1.41 1.41L1.41 40H0v-1.41zM0 1.4l2.83 2.83 1.41-1.41L1.41 0H0v1.41zM38.59 40l-2.83-2.83 1.41-1.41L40 38.59V40h-1.41zM40 1.41l-2.83 2.83-1.41-1.41L38.59 0H40v1.41zM20 18.6l2.83-2.83 1.41 1.41L21.41 20l2.83 2.83-1.41 1.41L20 21.41l-2.83 2.83-1.41-1.41L18.59 20l-2.83-2.83 1.41-1.41L20 18.59z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+.leiksa {
+  --srabs-100: var(--leiksa-100);
+  --srabs-200: var(--leiksa-200);
+  --srabs-300: var(--leiksa-300);
+  --srabs-400: var(--leiksa-400);
+}
+
+.mirakk {
+  --srabs-100: var(--mirakk-100);
+  --srabs-200: var(--mirakk-200);
+  --srabs-300: var(--mirakk-300);
+  --srabs-400: var(--mirakk-400);
+}
+
+.stun3r {
+  --srabs-100: var(--stun3r-100);
+  --srabs-200: var(--stun3r-200);
+  --srabs-300: var(--stun3r-300);
+  --srabs-400: var(--stun3r-400);
+}

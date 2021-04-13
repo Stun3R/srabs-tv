@@ -1,0 +1,6 @@
+TODO:
+    [] Fix JIT color everywhere
+    [] Add games to all srabs
+    [] Twitch player integration
+    [] Find a way to refresh token of each srab
+    [] Add color for each game: valorant (#dc3d4b), minecraft (#477b1e), leagueoflegends (#24649f), csgo (#e6a708)
