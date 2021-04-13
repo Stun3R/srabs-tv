@@ -1,68 +1,60 @@
 <template>
-  <div class="container">
-    <div>
-      <Logo />
-      <h1 class="title">srabs-tv</h1>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--green"
-        >
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--grey"
-        >
-          GitHub
-        </a>
-      </div>
+  <div>
+    <Hero />
+    <div v-if="isSrabVisible" id="details" class="min-h-screen pt-4">
+      <SrabProfile class="mx-4" />
+      <section class="mt-4">
+        <h3 class="mx-4 text-lg font-medium opacity-50">
+          Jeux joués en Stream
+        </h3>
+        <div class="flex mx-2 mt-2 overflow-x-scroll">
+          <div class="flex">
+            <div
+              v-for="(game, index) in srabs[1].games"
+              :key="index"
+              class="relative h-56 mx-2 rounded-lg shadow w-44"
+            >
+              <div
+                class="absolute top-0 bottom-0 left-0 right-0 flex rounded-lg opacity-0 games-logo hover:opacity-100 focus:opacity-100 active:opacity-100"
+                :class="`bg-[${game.color}]`"
+              >
+                <img
+                  :src="require(`~/assets/images/games/${game.overlay}`)"
+                  class="object-contain w-32 m-auto"
+                  alt=""
+                />
+              </div>
+              <img
+                class="object-cover h-full rounded-lg"
+                :src="require(`~/assets/images/games/${game.img}`)"
+                alt=""
+              />
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   </div>
 </template>
 
 <script>
-export default {}
+export default {
+  computed: {
+    srabs() {
+      return this.$store.state.srabs
+    },
+    isSrabVisible() {
+      return this.$store.state.srabVisible
+    },
+  },
+  methods: {},
+}
 </script>
 
-<style>
-/* Sample `apply` at-rules with Tailwind CSS
-.container {
-@apply min-h-screen flex justify-center items-center text-center mx-auto;
-}
-*/
-.container {
-  margin: 0 auto;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-
-.title {
-  font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
-    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
-}
-
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
-
-.links {
-  padding-top: 15px;
+<style lang="scss">
+.games {
+  &-logo {
+    transition: opacity 0.2s ease;
+  }
 }
 </style>
