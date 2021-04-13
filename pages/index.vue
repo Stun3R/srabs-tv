@@ -1,53 +1,144 @@
 <template>
-  <div>
-    <Hero />
-    <div v-if="isSrabVisible" id="details" class="min-h-screen pt-4">
-      <SrabProfile class="mx-4" />
-      <section class="mt-4">
-        <h3 class="mx-4 text-lg font-medium opacity-50">
-          Jeux joués en Stream
-        </h3>
-        <div class="flex mx-2 mt-2 overflow-x-scroll">
-          <div class="flex">
-            <div
-              v-for="(game, index) in srabs[1].games"
-              :key="index"
-              class="relative h-56 mx-2 rounded-lg shadow w-44"
-            >
-              <div
-                class="absolute top-0 bottom-0 left-0 right-0 flex rounded-lg opacity-0 games-logo hover:opacity-100 focus:opacity-100 active:opacity-100"
-                :class="`bg-[${game.color}]`"
-              >
-                <img
-                  :src="require(`~/assets/images/games/${game.overlay}`)"
-                  class="object-contain w-32 m-auto"
-                  alt=""
-                />
-              </div>
-              <img
-                class="object-cover h-full rounded-lg"
-                :src="require(`~/assets/images/games/${game.img}`)"
-                alt=""
-              />
-            </div>
-          </div>
-        </div>
-      </section>
-    </div>
+  <div
+    class="font-display"
+    :class="srabs[1].theme"
+    :style="`background-image: var(--${srabs[1].theme}-hideout);`"
+  >
+    <Hero
+      :srabs="srabs"
+      :loading="loading"
+      :is-hero-visible="isHeroVisible"
+      @rotate:srabs="rotateSrabs"
+      @show:srab="showSrab"
+    />
+    <section v-show="isSrabVisible" id="details" class="min-h-screen pt-4">
+      <SrabProfile
+        v-if="twitchProfile"
+        :srab="srabs[1]"
+        :twitch-profile="twitchProfile"
+        class="mx-4"
+      />
+      <GameList :games="srabs[1].games" />
+    </section>
   </div>
 </template>
 
 <script>
 export default {
-  computed: {
-    srabs() {
-      return this.$store.state.srabs
+  data() {
+    return {
+      loading: false,
+      isHeroVisible: true,
+      isSrabVisible: false,
+      twitchProfile: {},
+      srabs: [
+        {
+          id: 0,
+          theme: 'mirakk',
+          nickname: 'Mirakk',
+          twitch: 'mirakk_',
+          fullname: 'Karim "Mirakk" El Asli',
+          memoji: {
+            default: 'mirakk.png',
+            smile: 'mirakk_1.png',
+          },
+        },
+        {
+          id: 1,
+          theme: 'leiksa',
+          nickname: 'Leiksa',
+          twitch: 'leiksa_',
+          fullname: 'Diane "Leiksa" Guillot',
+          memoji: {
+            default: 'leiksa.png',
+            smile: 'leiksa_1.png',
+          },
+        },
+        {
+          id: 2,
+          theme: 'stun3r',
+          nickname: 'Stun3R',
+          twitch: 'stun3r_',
+          fullname: 'Thibaut "Stun3R" David',
+          memoji: {
+            default: 'stun3r.png',
+            smile: 'stun3r_1.png',
+          },
+          games: [
+            {
+              name: 'valorant',
+              color: 'bg-[#dc3d4b]',
+              img: 'valorant.jpeg',
+              overlay: 'valorant_logo.png',
+            },
+            {
+              name: 'minecraft',
+              color: 'bg-[#477b1e]',
+              img: 'minecraft.jpeg',
+              overlay: 'minecraft_logo.png',
+            },
+            {
+              name: 'leagueoflegends',
+              color: 'bg-[#24649f]',
+              img: 'leagueoflegends.jpeg',
+              overlay: 'leagueoflegends_logo.png',
+            },
+            {
+              name: 'csgo',
+              color: 'bg-[#e6a708]',
+              img: 'csgo.jpeg',
+              overlay: 'csgo_logo.png',
+            },
+          ],
+        },
+      ],
+    }
+  },
+  methods: {
+    rotateSrabs(index) {
+      const tmp = [...this.srabs]
+      if (index === 0) {
+        const save = tmp[2]
+        tmp[2] = tmp[1]
+        tmp[1] = tmp[0]
+        tmp[0] = save
+      } else if (index === 2) {
+        const save = tmp[0]
+        tmp[0] = tmp[1]
+        tmp[1] = tmp[2]
+        tmp[2] = save
+      }
+      this.srabs = tmp
     },
-    isSrabVisible() {
-      return this.$store.state.srabVisible
+    async showSrab() {
+      this.loading = true
+      const self = this
+      const options = {
+        container: 'body',
+        easing: 'ease-in',
+        lazy: false,
+        offset: 0,
+        force: true,
+        cancelable: false,
+        onStart(element) {},
+        onDone(element) {
+          self.isHeroVisible = false
+        },
+        x: false,
+        y: true,
+      }
+
+      const twitchProfile = await this.$twitch.kraken.channels.getMyChannel()
+      const subCount = await this.$twitch.kraken.channels.getChannelSubscriptionCount(
+        twitchProfile.id
+      )
+      twitchProfile.subCount = subCount
+      this.twitchProfile = twitchProfile
+      this.isSrabVisible = true
+      this.loading = false
+      this.$scrollTo('#details', 500, options)
     },
   },
-  methods: {},
 }
 </script>
 

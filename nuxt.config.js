@@ -2,6 +2,11 @@ export default {
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
 
+  publicRuntimeConfig: {
+    twitchClientId: process.env.TWITCH_CLIENT_ID,
+    accessToken: process.env.STUN3R_ACCESS_TOKEN,
+  },
+
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     title: "Srab's TV",
@@ -54,8 +59,10 @@ export default {
     // https://go.nuxtjs.dev/tailwindcss
     '@nuxtjs/tailwindcss',
     '@aceforth/nuxt-optimized-images',
-    '@nuxtjs/dotenv',
   ],
+
+  // Modules: https://go.nuxtjs.dev/config-modules
+  modules: ['@nuxtjs/robots', '@nuxtjs/sitemap', 'vue-scrollto/nuxt'],
 
   tailwindcss: {
     // add '~tailwind.config` alias
@@ -70,7 +77,6 @@ export default {
         cacheTime: 1000 * 60 * 60 * 2,
         trailingSlash: true,
         gzip: true,
-        generate: process.env.NODE_ENV !== 'development',
         defaults: {
           lastmod: new Date(),
         },
@@ -94,9 +100,6 @@ export default {
     optimizeImages: true,
     optimizeImagesInDev: false,
   },
-
-  // Modules: https://go.nuxtjs.dev/config-modules
-  modules: ['@nuxtjs/robots', '@nuxtjs/sitemap', 'vue-scrollto/nuxt'],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {},

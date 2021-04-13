@@ -1,0 +1,10 @@
+[context.production.environment]
+    WEBSITE_URL= "https://srabs.tv"
+
+[context.develop.environment]
+    WEBSITE_URL= "https://dev.srabs.tv"
+    NODE_ENV = "staging"
+
+[context.deploy-preview.environment]
+    WEBSITE_URL= "https://dev.srabs.tv"
+    NODE_ENV = "staging"

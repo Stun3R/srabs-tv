@@ -1,13 +1,12 @@
 <template>
   <section
-    id="identity"
     class="py-4 rounded-lg shadow bg-gradient-to-tr from-srabs-300 to-srabs-100"
   >
     <h2 class="text-xl font-semibold text-center text-white">
-      {{ srabs[1].fullname }}
+      {{ srab.fullname }}
     </h2>
     <img
-      :src="require(`~/assets/images/memoji/${srabs[1].memoji.default}`)"
+      :src="require(`~/assets/images/memoji/${srab.memoji.default}`)"
       draggable="false"
       class="object-contain mx-auto mt-4 h-28 w-28"
       alt=""
@@ -30,12 +29,14 @@
 
 <script>
 export default {
-  computed: {
-    srabs() {
-      return this.$store.state.srabs
+  props: {
+    srab: {
+      type: Object,
+      default: () => {},
     },
-    twitchProfile() {
-      return this.$store.state.twitchProfile
+    twitchProfile: {
+      type: Object,
+      default: () => {},
     },
   },
   methods: {},

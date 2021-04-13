@@ -37,7 +37,7 @@
               ? 'mb-auto mt-16 sm:mt-20 md:mt-36 mx-3 z-50 h-36 sm:h-48 md:h-56 flip-list-item'
               : 'opacity-50 mt-12 h-20 sm:h-28 md:h-40 cursor-pointer'
           "
-          @click="$store.dispatch('rotateSrabs', index)"
+          @click="$emit('rotate:srabs', index)"
         />
       </transition-group>
     </div>
@@ -45,7 +45,7 @@
       class="inline-flex items-center bg-srabs-300 text-white text-sm mt-8 mx-auto py-2.5 px-6 rounded-3xl select-none cursor-pointer focus:outline-none hover:bg-srabs-400 active:bg-srabs-400"
       :class="{ 'cursor-not-allow': loading, disabled: loading }"
       style="transition: background-color 0.4s ease"
-      @click="showSrab"
+      @click="$emit('show:srab')"
     >
       <IconsLoading v-show="loading" />
       Découvrir {{ srabs[1].nickname }}
@@ -55,48 +55,18 @@
 
 <script>
 export default {
-  data() {
-    return {
-      scrollDone: false,
-      loading: false,
-    }
-  },
-  computed: {
-    srabs() {
-      return this.$store.state.srabs
+  props: {
+    srabs: {
+      type: Array,
+      default: () => [],
     },
-    isHeroVisible() {
-      return this.$store.state.heroVisible
+    loading: {
+      type: Boolean,
+      default: false,
     },
-  },
-  methods: {
-    async showSrab() {
-      this.loading = true
-      const self = this
-      const options = {
-        container: 'body',
-        easing: 'ease-in',
-        lazy: false,
-        offset: 0,
-        force: true,
-        cancelable: false,
-        onStart(element) {},
-        onDone(element) {
-          self.$store.dispatch('setHeroVisible', false)
-        },
-        x: false,
-        y: true,
-      }
-
-      const twitchProfile = await this.$twitch.kraken.channels.getMyChannel()
-      const subCount = await this.$twitch.kraken.channels.getChannelSubscriptionCount(
-        twitchProfile.id
-      )
-      twitchProfile.subCount = subCount
-      this.$store.commit('setTwitchProfile', twitchProfile)
-      await this.$store.dispatch('setSrabVisible', true)
-      this.$scrollTo('#details', 500, options)
-      this.loading = false
+    isHeroVisible: {
+      type: Boolean,
+      default: true,
     },
   },
 }
