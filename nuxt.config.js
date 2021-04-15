@@ -5,6 +5,7 @@ export default {
   publicRuntimeConfig: {
     twitchClientId: process.env.TWITCH_CLIENT_ID,
     accessToken: process.env.STUN3R_ACCESS_TOKEN,
+    stun3rChat: process.env.STUN3R_CHAT,
   },
 
   // Global page headers: https://go.nuxtjs.dev/config-head

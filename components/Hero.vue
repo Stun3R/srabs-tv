@@ -8,7 +8,7 @@
       <h3 class="text-srabs-400" style="transition: color 0.4s ease">
         Une famille pour les gouverner tous
       </h3>
-      <h1 class="mt-2 text-2xl font-medium text-gray-900">Choisit ton srab</h1>
+      <h1 class="mt-2 text-2xl font-medium text-gray-900">Choisis ton srab</h1>
     </div>
 
     <div class="relative flex mt-8 h-60 sm:h-80 md:h-112">

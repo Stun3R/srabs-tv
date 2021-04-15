@@ -1,12 +1,13 @@
 <template>
-  <div class="mt-4">
-    <h3 class="mx-4 text-lg font-medium opacity-50">Jeux joués en Stream</h3>
-    <div class="flex mx-2 mt-2 overflow-x-scroll">
+  <div class="mx-4 mt-4">
+    <h3 class="text-lg font-medium opacity-60">Jeux joués en Stream</h3>
+    <div class="flex mt-2 overflow-x-scroll">
       <div class="flex">
         <div
           v-for="(game, index) in games"
           :key="index"
-          class="relative h-56 mx-2 rounded-lg shadow w-44"
+          class="relative h-56 mx-2 rounded-lg shadow md:h-64 w-52"
+          :class="{ 'ml-0': index === 0 }"
         >
           <div
             class="absolute top-0 bottom-0 left-0 right-0 flex rounded-lg opacity-0 games-logo hover:opacity-100 focus:opacity-100 active:opacity-100"
