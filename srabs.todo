@@ -2,8 +2,12 @@ TODO:
     [x] Fix JIT color everywhere
     [x] Twitch player integration
     [x] Add color for each game: valorant (#dc3d4b), minecraft (#477b1e), leagueoflegends (#24649f), csgo (#e6a708)
-    [] API with Strapi
-    [] Find a way to refresh token of each srab
-    [] Add games to all srabs
-    [] Dynamic Stream message on top of Twitch Player
+    [x] API with Strapi
+    [x] Find a way to refresh token of each srab
+    [x] Add games to all srabs
+    [x] Dynamic Stream message on top of Twitch Player
     [] Custom scrollbar
+    [] Back button
+    [] Made with love (copyright)
+    [] Netlify Hosting
+    [] Heroku Hosting

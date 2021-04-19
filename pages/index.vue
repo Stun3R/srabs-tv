@@ -6,7 +6,6 @@
   >
     <Hero
       :srabs="srabs"
-      :loading="loading"
       :is-hero-visible="isHeroVisible"
       @rotate:srabs="rotateSrabs"
       @show:srab="showSrab"
@@ -17,16 +16,17 @@
       class="flex-col px-4 pt-4 mx-auto sm:px-8 sm:pt-8 lg:max-w-2xl"
     >
       <SrabProfile
-        v-if="twitchProfile"
+        v-if="srabs[1].twitch"
         :srab="srabs[1]"
-        :twitch-profile="twitchProfile"
+        :twitch="srabs[1].twitch"
         class="mx-auto"
       />
-      <GameList :games="srabs[1].games" class="mx-auto" />
+      <GameList v-if="isSrabVisible" :games="srabs[1].games" class="mx-auto" />
       <SrabTwitch
         v-if="isSrabVisible"
         class="col-span-1 md:col-span-2"
         :channel="srabs[1].channel"
+        :twitch="srabs[1].twitch"
       />
     </section>
   </div>
@@ -34,113 +34,14 @@
 
 <script>
 export default {
+  async asyncData({ $strapi }) {
+    const srabs = await $strapi.$srabs.find()
+    return { srabs }
+  },
   data() {
     return {
-      loading: false,
       isHeroVisible: true,
       isSrabVisible: false,
-      twitchProfile: {},
-      srabs: [
-        {
-          id: 0,
-          theme: 'mirakk',
-          nickname: 'Mirakk',
-          channel: 'mirakk_',
-          fullname: 'Karim "Mirakk" El Asli',
-          memoji: {
-            default: 'mirakk.png',
-            smile: 'mirakk_1.png',
-          },
-          games: [
-            {
-              name: 'leagueoflegends',
-              color: 'bg-[#24649f]',
-              img: 'leagueoflegends.jpeg',
-              overlay: 'leagueoflegends_logo.png',
-            },
-            {
-              name: 'csgo',
-              color: 'bg-[#e6a708]',
-              img: 'csgo.jpeg',
-              overlay: 'csgo_logo.png',
-            },
-            {
-              name: 'minecraft',
-              color: 'bg-[#477b1e]',
-              img: 'minecraft.jpeg',
-              overlay: 'minecraft_logo.png',
-            },
-          ],
-        },
-        {
-          id: 1,
-          theme: 'leiksa',
-          nickname: 'Leiksa',
-          channel: 'leiksatv',
-          fullname: 'Diane "Leiksa" Guillot',
-          memoji: {
-            default: 'leiksa.png',
-            smile: 'leiksa_1.png',
-          },
-          games: [
-            {
-              name: 'leagueoflegends',
-              color: 'bg-[#24649f]',
-              img: 'leagueoflegends.jpeg',
-              overlay: 'leagueoflegends_logo.png',
-            },
-            {
-              name: 'csgo',
-              color: 'bg-[#e6a708]',
-              img: 'csgo.jpeg',
-              overlay: 'csgo_logo.png',
-            },
-            {
-              name: 'minecraft',
-              color: 'bg-[#477b1e]',
-              img: 'minecraft.jpeg',
-              overlay: 'minecraft_logo.png',
-            },
-          ],
-        },
-        {
-          id: 2,
-          theme: 'stun3r',
-          nickname: 'Stun3R',
-          channel: 'stun3r_',
-          fullname: 'Thibaut "Stun3R" David',
-          memoji: {
-            default: 'stun3r.png',
-            smile: 'stun3r_1.png',
-          },
-          games: [
-            {
-              name: 'valorant',
-              color: 'bg-[#dc3d4b]',
-              img: 'valorant.jpeg',
-              overlay: 'valorant_logo.png',
-            },
-            {
-              name: 'minecraft',
-              color: 'bg-[#477b1e]',
-              img: 'minecraft.jpeg',
-              overlay: 'minecraft_logo.png',
-            },
-            {
-              name: 'leagueoflegends',
-              color: 'bg-[#24649f]',
-              img: 'leagueoflegends.jpeg',
-              overlay: 'leagueoflegends_logo.png',
-            },
-            {
-              name: 'csgo',
-              color: 'bg-[#e6a708]',
-              img: 'csgo.jpeg',
-              overlay: 'csgo_logo.png',
-            },
-          ],
-        },
-      ],
     }
   },
   methods: {
@@ -159,8 +60,7 @@ export default {
       }
       this.srabs = tmp
     },
-    async showSrab() {
-      this.loading = true
+    showSrab() {
       const self = this
       const options = {
         container: 'body',
@@ -177,14 +77,7 @@ export default {
         y: true,
       }
 
-      const twitchProfile = await this.$twitch.kraken.channels.getMyChannel()
-      const subCount = await this.$twitch.kraken.channels.getChannelSubscriptionCount(
-        twitchProfile.id
-      )
-      twitchProfile.subCount = subCount
-      this.twitchProfile = twitchProfile
       this.isSrabVisible = true
-      this.loading = false
       this.$scrollTo('#details', 500, options)
     },
   },

@@ -6,6 +6,8 @@ export default {
     twitchClientId: process.env.TWITCH_CLIENT_ID,
     accessToken: process.env.STUN3R_ACCESS_TOKEN,
     stun3rChat: process.env.STUN3R_CHAT,
+    imageUrl:
+      process.env.NODE_ENV === 'development' ? 'http://localhost:1337' : '',
   },
 
   // Global page headers: https://go.nuxtjs.dev/config-head
@@ -63,11 +65,20 @@ export default {
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
-  modules: ['@nuxtjs/robots', '@nuxtjs/sitemap', 'vue-scrollto/nuxt'],
+  modules: [
+    '@nuxtjs/robots',
+    '@nuxtjs/sitemap',
+    'vue-scrollto/nuxt',
+    '@nuxtjs/strapi',
+  ],
 
   tailwindcss: {
     // add '~tailwind.config` alias
     exposeConfig: true,
+  },
+
+  strapi: {
+    entities: ['srabs'],
   },
 
   sitemap: () => {

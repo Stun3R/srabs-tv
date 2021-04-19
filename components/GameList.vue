@@ -11,17 +11,17 @@
         >
           <div
             class="absolute top-0 bottom-0 left-0 right-0 flex rounded-lg opacity-0 games-logo hover:opacity-100 focus:opacity-100 active:opacity-100"
-            :class="game.color"
+            :class="`bg-[${game.color}]`"
           >
             <img
-              :src="require(`~/assets/images/games/${game.overlay}`)"
+              :src="`${$config.imageUrl}${game.overlay.url}`"
               class="object-contain w-32 m-auto"
               alt=""
             />
           </div>
           <img
             class="object-cover h-full rounded-lg"
-            :src="require(`~/assets/images/games/${game.img}`)"
+            :src="`${$config.imageUrl}${game.image.url}`"
             alt=""
           />
         </div>
@@ -37,6 +37,11 @@ export default {
       type: Array,
       default: () => [],
     },
+  },
+  data() {
+    return {
+      colors: ['#dc3d4b', '#24649f'],
+    }
   },
 }
 </script>

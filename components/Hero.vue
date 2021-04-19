@@ -25,9 +25,9 @@
           v-for="(srab, index) in srabs"
           :key="srab.id"
           :src="
-            require(`~/assets/images/memoji/${
-              index !== 1 ? srab.memoji.default : srab.memoji.smile
-            }`)
+            index !== 1
+              ? `${$config.imageUrl}${srab.memoji.default.url}`
+              : `${$config.imageUrl}${srab.memoji.smile.url}`
           "
           alt=""
           draggable="false"
@@ -43,11 +43,9 @@
     </div>
     <div
       class="inline-flex items-center bg-srabs-300 text-white text-sm mt-8 mx-auto py-2.5 px-6 rounded-3xl select-none cursor-pointer focus:outline-none hover:bg-srabs-400 active:bg-srabs-400"
-      :class="{ 'cursor-not-allow': loading, disabled: loading }"
       style="transition: background-color 0.4s ease"
       @click="$emit('show:srab')"
     >
-      <IconsLoading v-show="loading" />
       Découvrir {{ srabs[1].nickname }}
     </div>
   </div>
@@ -59,10 +57,6 @@ export default {
     srabs: {
       type: Array,
       default: () => [],
-    },
-    loading: {
-      type: Boolean,
-      default: false,
     },
     isHeroVisible: {
       type: Boolean,

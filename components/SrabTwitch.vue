@@ -1,8 +1,17 @@
 <template>
   <div class="mx-auto my-8">
     <h3 class="flex text-lg font-medium opacity-60">
-      Le stream est en ligne
-      <Ping />
+      Le stream est&nbsp;
+      <span
+        v-if="twitch.status"
+        class="font-semibold text-green-600 opacity-100"
+      >
+        en ligne
+      </span>
+      <span v-else class="font-semibold text-red-700 opacity-100">
+        hors-ligne
+      </span>
+      <Ping v-if="twitch.status" />
     </h3>
 
     <div class="flex flex-col mt-2 md:flex-row">
@@ -28,6 +37,10 @@ export default {
     channel: {
       type: String,
       default: '',
+    },
+    twitch: {
+      type: Object,
+      default: () => {},
     },
   },
 }
