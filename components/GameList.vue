@@ -1,17 +1,18 @@
 <template>
   <div class="mx-4 mt-4">
-    <h3 class="text-lg font-medium opacity-60">Jeux joués en Stream</h3>
+    <h3 class="text-lg font-medium opacity-60 dark:text-white dark:opacity-75">
+      Jeux joués en Stream
+    </h3>
     <div class="flex mt-2 overflow-x-scroll">
-      <div class="flex">
+      <div class="flex space-x-4">
         <div
           v-for="(game, index) in games"
           :key="index"
-          class="relative h-56 mx-2 rounded-lg shadow md:h-64 w-52"
-          :class="{ 'ml-0': index === 0 }"
+          class="relative h-56 rounded-lg shadow md:h-64 w-52"
         >
           <div
             class="absolute top-0 bottom-0 left-0 right-0 flex rounded-lg opacity-0 games-logo hover:opacity-100 focus:opacity-100 active:opacity-100"
-            :class="`bg-[${game.color}]`"
+            :style="{ 'background-color': game.color }"
           >
             <img
               :src="`${$config.imageUrl}${game.overlay.url}`"
@@ -40,7 +41,7 @@ export default {
   },
   data() {
     return {
-      colors: ['#dc3d4b', '#24649f'],
+      colors: ['#dc3d4b', '#24649f', '#e6a708', '#477b1e'],
     }
   },
 }

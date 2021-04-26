@@ -2,13 +2,26 @@
   <section
     class="py-4 rounded-lg shadow bg-gradient-to-tr from-srabs-300 to-srabs-100"
   >
-    <h2 class="text-xl font-semibold text-center text-white">
-      {{ srab.fullname }}
-    </h2>
+    <div class="relative md:grid-cols-3">
+      <div class="group" @click="$emit('show:hero')">
+        <IconsChevronLeft
+          class="mt-0.5 text-white group-hover:opacity-70 transition-all group-hover:transform group-hover:scale-125 stroke-current cursor-pointer absolute top-0 left-4"
+        />
+      </div>
+
+      <h2 class="text-lg font-semibold text-center text-white sm:text-xl">
+        {{ srab.fullname }}
+      </h2>
+      <Socials
+        :socials="srab.socials"
+        class="mt-0.5 sm:mt-0 absolute top-0 right-4"
+      />
+    </div>
+
     <img
       :src="`${$config.imageUrl}${srab.memoji.default.url}`"
       draggable="false"
-      class="object-contain mx-auto mt-4 h-28 w-28"
+      class="object-contain mx-auto mt-8 h-28 w-28"
       alt=""
     />
     <div class="px-4 mt-4 text-sm italic text-center text-white">

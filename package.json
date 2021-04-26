@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "nuxt",
+    "dev:api": "NODE_ENV=production STRAPI_URL=https://srabs-tv-api.herokuapp.com/ nuxt",
     "build": "nuxt build",
     "start": "nuxt start",
     "generate": "nuxt generate",
@@ -27,12 +28,11 @@
     "core-js": "^3.9.1",
     "glob": "^7.1.6",
     "nuxt": "^2.15.3",
-    "twitch": "^4.5.5",
-    "twitch-chat-embed": "^1.0.1",
     "vue-scrollto": "^2.20.0"
   },
   "devDependencies": {
     "@aceforth/nuxt-optimized-images": "^1.4.0",
+    "@nuxtjs/color-mode": "^2.0.5",
     "@nuxtjs/eslint-config": "^6.0.0",
     "@nuxtjs/eslint-module": "^3.0.2",
     "@nuxtjs/tailwindcss": "^4.0.1",
@@ -54,7 +54,6 @@
     "prettier": "^2.2.1",
     "sass-loader": "^10.1.1",
     "standard-version": "^9.2.0",
-    "vue-twitch-chat": "^1.0.0",
     "vue-twitch-player": "^1.0.8",
     "webp-loader": "^0.6.0"
   },

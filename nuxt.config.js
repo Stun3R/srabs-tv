@@ -3,9 +3,6 @@ export default {
   target: 'static',
 
   publicRuntimeConfig: {
-    twitchClientId: process.env.TWITCH_CLIENT_ID,
-    accessToken: process.env.STUN3R_ACCESS_TOKEN,
-    stun3rChat: process.env.STUN3R_CHAT,
     imageUrl:
       process.env.NODE_ENV === 'development' ? 'http://localhost:1337' : '',
   },
@@ -50,7 +47,7 @@ export default {
   css: ['@/assets/css/poppins.css'],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: ['@/plugins/twitch'],
+  plugins: [],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -62,6 +59,7 @@ export default {
     // https://go.nuxtjs.dev/tailwindcss
     '@nuxtjs/tailwindcss',
     '@aceforth/nuxt-optimized-images',
+    '@nuxtjs/color-mode',
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -75,6 +73,10 @@ export default {
   tailwindcss: {
     // add '~tailwind.config` alias
     exposeConfig: true,
+  },
+
+  colorMode: {
+    classSuffix: '',
   },
 
   strapi: {

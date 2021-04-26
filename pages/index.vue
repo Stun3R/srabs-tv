@@ -1,25 +1,34 @@
 <template>
   <div
-    class="min-h-screen font-display"
-    :class="srabs[1].theme"
-    :style="`background-image: var(--${srabs[1].theme}-hideout);`"
+    class="min-h-screen pb-4 font-display dark:bg-[#202124] transition-colors bg-opacity-10 select-none"
+    :class="srabs[1].slug"
+    :style="`background-image: var(--${srabs[1].slug}-hideout-${mode});`"
   >
+    <ColorMode
+      :class="{ 'opacity-0': isSrabVisible }"
+      class="fixed transition-opacity duration-200 right-6 top-6"
+    />
     <Hero
+      v-show="isHeroVisible"
       :srabs="srabs"
-      :is-hero-visible="isHeroVisible"
       @rotate:srabs="rotateSrabs"
-      @show:srab="showSrab"
+      @show:srab="scrollTo('#details')"
     />
     <section
       v-show="isSrabVisible"
       id="details"
       class="flex-col px-4 pt-4 mx-auto sm:px-8 sm:pt-8 lg:max-w-2xl"
     >
+      <ColorMode
+        :class="{ 'opacity-0': isHeroVisible }"
+        class="fixed hidden transition-opacity duration-200 lg:block right-6 bottom-6"
+      />
       <SrabProfile
         v-if="srabs[1].twitch"
         :srab="srabs[1]"
         :twitch="srabs[1].twitch"
         class="mx-auto"
+        @show:hero="scrollTo('#hero')"
       />
       <GameList v-if="isSrabVisible" :games="srabs[1].games" class="mx-auto" />
       <SrabTwitch
@@ -28,6 +37,18 @@
         :channel="srabs[1].channel"
         :twitch="srabs[1].twitch"
       />
+
+      <div class="text-center dark:text-white">
+        Made with ❤️ by
+        <a
+          class="font-semibold hover:text-srabs-300 active:text-srabs-300 focus:text-srabs-300] transition ease-in-out duration-400"
+          href="#"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Thibaut DAVID
+        </a>
+      </div>
     </section>
   </div>
 </template>
@@ -43,6 +64,11 @@ export default {
       isHeroVisible: true,
       isSrabVisible: false,
     }
+  },
+  computed: {
+    mode() {
+      return this.$colorMode.preference
+    },
   },
   methods: {
     rotateSrabs(index) {
@@ -60,7 +86,7 @@ export default {
       }
       this.srabs = tmp
     },
-    showSrab() {
+    scrollTo(destination) {
       const self = this
       const options = {
         container: 'body',
@@ -71,14 +97,24 @@ export default {
         cancelable: false,
         onStart(element) {},
         onDone(element) {
-          self.isHeroVisible = false
+          if (destination === '#hero') {
+            self.isSrabVisible = false
+          } else {
+            self.isHeroVisible = false
+          }
         },
         x: false,
         y: true,
       }
 
-      this.isSrabVisible = true
-      this.$scrollTo('#details', 500, options)
+      if (destination === '#hero') {
+        self.isHeroVisible = true
+      } else {
+        self.isSrabVisible = true
+      }
+      setTimeout(function () {
+        self.$scrollTo(destination, 500, options)
+      }, 1)
     },
   },
 }

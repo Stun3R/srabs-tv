@@ -1,17 +1,22 @@
 <template>
-  <div class="mx-auto my-8">
-    <h3 class="flex text-lg font-medium opacity-60">
+  <div v-if="twitch" class="mx-auto my-8">
+    <h3
+      class="flex text-lg font-medium opacity-60 dark:opacity-75 dark:text-white"
+    >
       Le stream est&nbsp;
       <span
-        v-if="twitch.status"
-        class="font-semibold text-green-600 opacity-100"
+        v-if="twitch.isLive"
+        class="font-semibold text-green-600 opacity-100 dark:text-green-500"
       >
         en ligne
       </span>
-      <span v-else class="font-semibold text-red-700 opacity-100">
+      <span
+        v-else
+        class="font-semibold text-red-700 opacity-100 dark:text-red-600"
+      >
         hors-ligne
       </span>
-      <Ping v-if="twitch.status" />
+      <Ping v-if="twitch.isLive" />
     </h3>
 
     <div class="flex flex-col mt-2 md:flex-row">

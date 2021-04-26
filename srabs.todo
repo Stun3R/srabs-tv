@@ -6,8 +6,15 @@ TODO:
     [x] Find a way to refresh token of each srab
     [x] Add games to all srabs
     [x] Dynamic Stream message on top of Twitch Player
+    [x] Add social network (front & back)
+    [x] Back button
+    [x] Made with love (copyright)
+    [x] Scale when hover for socials icons & srabs memoji
+    [x] Fix game card with space instead of mx
+    [x] Heroku Hosting
+    [x] DarkSasuke Mode
+    [] 404 page
     [] Custom scrollbar
-    [] Back button
-    [] Made with love (copyright)
+    [] SEO
+    [] Optimize images
     [] Netlify Hosting
-    [] Heroku Hosting
