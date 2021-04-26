@@ -2,10 +2,14 @@ const colors = require('tailwindcss/colors')
 
 module.exports = {
   mode: 'jit',
+  darkMode: 'class',
   purge: [
-    './layouts/**/*.{js,jsx,ts,tsx,vue}',
-    './components/**/*.{js,jsx,ts,tsx,vue}',
-    './pages/**/*.{js,jsx,ts,tsx,vue}',
+    '~/components/**/*.{vue,js}',
+    '~/layouts/**/*.vue',
+    '~/pages/**/*.vue',
+    '~/plugins/**/*.{js,ts}',
+    '~/store/**/*.{js,ts}',
+    '~/nuxt.config.{js,ts}',
   ],
   theme: {
     colors: {
@@ -14,6 +18,7 @@ module.exports = {
       current: 'currentColor',
       white: '#fff',
       gray: colors.coolGray,
+      green: colors.emerald,
       red: colors.rose,
       yellow: colors.amber,
       blue: colors.lightBlue,

@@ -1,6 +1,22 @@
+import axios from 'axios'
+
 export default {
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
+
+  publicRuntimeConfig: {
+    imageUrl:
+      process.env.NODE_ENV === 'development' ? 'http://localhost:1337' : '',
+  },
+
+  generate: {
+    async routes() {
+      const response = await axios.get(
+        'https://srabs-tv-api.herokuapp.com/srabs'
+      )
+      return [{ route: '/', payload: response.data }]
+    },
+  },
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
@@ -42,7 +58,7 @@ export default {
   css: ['@/assets/css/poppins.css'],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: ['@/plugins/twitch'],
+  plugins: [],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -54,12 +70,28 @@ export default {
     // https://go.nuxtjs.dev/tailwindcss
     '@nuxtjs/tailwindcss',
     '@aceforth/nuxt-optimized-images',
-    '@nuxtjs/dotenv',
+    '@nuxtjs/color-mode',
+  ],
+
+  // Modules: https://go.nuxtjs.dev/config-modules
+  modules: [
+    '@nuxtjs/robots',
+    '@nuxtjs/sitemap',
+    'vue-scrollto/nuxt',
+    '@nuxtjs/strapi',
   ],
 
   tailwindcss: {
     // add '~tailwind.config` alias
     exposeConfig: true,
+  },
+
+  colorMode: {
+    classSuffix: '',
+  },
+
+  strapi: {
+    entities: ['srabs'],
   },
 
   sitemap: () => {
@@ -70,7 +102,6 @@ export default {
         cacheTime: 1000 * 60 * 60 * 2,
         trailingSlash: true,
         gzip: true,
-        generate: process.env.NODE_ENV !== 'development',
         defaults: {
           lastmod: new Date(),
         },
@@ -94,9 +125,6 @@ export default {
     optimizeImages: true,
     optimizeImagesInDev: false,
   },
-
-  // Modules: https://go.nuxtjs.dev/config-modules
-  modules: ['@nuxtjs/robots', '@nuxtjs/sitemap', 'vue-scrollto/nuxt'],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {},
