@@ -12,7 +12,7 @@ export default {
   generate: {
     async routes() {
       const response = await axios.get(
-        'https://srabs-tv-api.herokuapp.com/srabs'
+        'https://srabs-tv-api.herokuapp.com/srabs?_sort=id:ASC'
       )
       return [{ route: '/', payload: response.data }]
     },
