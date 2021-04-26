@@ -14,7 +14,5 @@ TODO:
     [x] Heroku Hosting
     [x] DarkSasuke Mode
     [x] 404 page
-    [] Custom scrollbar
-    [] SEO
-    [] Optimize images
-    [] Netlify Hosting
+    [x] SEO
+    [x] Netlify Hosting

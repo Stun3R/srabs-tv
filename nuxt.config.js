@@ -30,12 +30,16 @@ export default {
       {
         hid: 'description',
         name: 'description',
-        content: '',
+        content: 'Viens ici choisir ton srab pour en découvrir plus!!',
       },
       { hid: 'og:type', name: 'og:type', content: 'website' },
-      { hid: 'og:url', name: 'og:url', content: 'XXXX' },
-      { hid: 'og:title', name: 'og:title', content: 'XXXX' },
-      { hid: 'og:site_name', name: 'og:site_name', content: 'XXXX' },
+      { hid: 'og:url', name: 'og:url', content: `${process.env.WEBSITE_URL}` },
+      { hid: 'og:title', name: 'og:title', content: 'Srabs TV' },
+      {
+        hid: 'og:site_name',
+        name: 'og:site_name',
+        content: 'Choisis ton Srab',
+      },
       { hid: 'og:locale', name: 'og:locale', content: 'fr' },
       {
         hid: 'og:image',
@@ -44,12 +48,6 @@ export default {
       },
       { name: 'msapplication-TileColor', content: '#282F33' },
       { name: 'theme-color', content: '#FFCB1C' },
-      {
-        name: 'twitter:card',
-        content: '',
-      },
-      { name: 'twitter:site', content: '@' },
-      { name: 'twitter:creator', content: '@' },
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
   },
