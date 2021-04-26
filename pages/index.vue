@@ -1,6 +1,6 @@
 <template>
   <div
-    class="min-h-screen pb-4 font-display dark:bg-[#202124] transition-colors bg-opacity-10 select-none"
+    class="min-h-screen pb-4 font-display dark:bg-[#202124] transition-colors select-none"
     :class="srabs[1].slug"
     :style="`background-image: var(--${srabs[1].slug}-hideout-${mode});`"
   >
@@ -55,9 +55,15 @@
 
 <script>
 export default {
-  async asyncData({ $strapi }) {
-    const srabs = await $strapi.$srabs.find()
-    return { srabs }
+  async asyncData({ payload, $strapi }) {
+    if (payload) return { srabs: payload }
+    else if (
+      process.env.NODE_ENV === 'development' ||
+      (process.env.NODE_ENV === 'production' && process.env.STRAPI_URL)
+    ) {
+      const srabs = await $strapi.$srabs.find()
+      return { srabs }
+    }
   },
   data() {
     return {

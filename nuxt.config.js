@@ -1,3 +1,5 @@
+import axios from 'axios'
+
 export default {
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
@@ -5,6 +7,15 @@ export default {
   publicRuntimeConfig: {
     imageUrl:
       process.env.NODE_ENV === 'development' ? 'http://localhost:1337' : '',
+  },
+
+  generate: {
+    async routes() {
+      const response = await axios.get(
+        'https://srabs-tv-api.herokuapp.com/srabs'
+      )
+      return [{ route: '/', payload: response.data }]
+    },
   },
 
   // Global page headers: https://go.nuxtjs.dev/config-head
