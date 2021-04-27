@@ -1,20 +1,15 @@
-# srabs-tv
+[![srabs-tv](https://srabs-tv.netlify.app/preview.png)](https://srabs-tv.netlify.app)
 
-## Build Setup
+# Srabs TV
 
-```bash
-# install dependencies
-$ yarn install
+[![code style][standard-src]][standard-href]
 
-# serve with hot reload at localhost:3000
-$ yarn dev
+- 🧐 Choose your Srab
+- ✨ Discover wonderful information about him
+- 🎬 Play with Twitch player & Dark mode
 
-# build for production and launch server
-$ yarn build
-$ yarn start
+[🖥 &nbsp;Check it out](https://srabs-tv.netlify.app)
 
-# generate static project
-$ yarn generate
-```
-
-For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
+<!-- Badges -->
+[standard-src]: https://img.shields.io/badge/code_style-standard-brightgreen.svg?style=flat-square
+[standard-href]: https://standardjs.com

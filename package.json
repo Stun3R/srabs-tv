@@ -58,6 +58,27 @@
     "vue-twitch-player": "^1.0.8",
     "webp-loader": "^0.6.0"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Stun3R/srabs-tv.git"
+  },
+  "keywords": [
+    "nuxtjs",
+    "nuxt",
+    "tailwind",
+    "tailwindcss",
+    "srabs"
+  ],
+  "author": "Thibaut DAVID <thibautdavid@icloud.com>",
+  "contributors": [
+    {
+      "name": "Thibaut DAVID <thibautdavid@icloud.com>"
+    }
+  ],
+  "bugs": {
+    "url": "https://github.com/Stun3R/srabs-tv/issues"
+  },
+  "homepage": "https://srabs-tv.netlify.app",
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
