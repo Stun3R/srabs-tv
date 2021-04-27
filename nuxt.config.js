@@ -10,6 +10,7 @@ export default {
   },
 
   generate: {
+    fallback: true,
     async routes() {
       const response = await axios.get(
         'https://srabs-tv-api.herokuapp.com/srabs?_sort=id:ASC'
