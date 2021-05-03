@@ -1,23 +1,9 @@
-import axios from 'axios'
-
 export default {
   // Target: https://go.nuxtjs.dev/config-target
-  target: 'static',
+  target: 'server',
 
   publicRuntimeConfig: {
     apiUrl: process.env.STRAPI_URL || 'http://localhost:1337',
-  },
-
-  generate: {
-    fallback: true,
-    async routes() {
-      const response = await axios.get(
-        `${
-          process.env.STRAPI_URL || 'http://localhost:1337'
-        }/srabs?_sort=id:ASC`
-      )
-      return [{ route: '/', payload: response.data }]
-    },
   },
 
   // Global page headers: https://go.nuxtjs.dev/config-head
