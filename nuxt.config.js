@@ -1,6 +1,6 @@
 export default {
   // Target: https://go.nuxtjs.dev/config-target
-  target: 'server',
+  mode: 'universal',
 
   publicRuntimeConfig: {
     apiUrl: process.env.STRAPI_URL || 'http://localhost:1337',

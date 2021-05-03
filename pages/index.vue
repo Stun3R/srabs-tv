@@ -25,9 +25,9 @@
         class="fixed hidden transition-opacity duration-200 lg:block right-6 bottom-6"
       />
       <SrabProfile
-        v-if="srabs[1].twitch"
+        v-if="twitch"
         :srab="srabs[1]"
-        :twitch="srabs[1].twitch"
+        :twitch="twitch"
         class="mx-auto"
         @show:hero="scrollTo('#hero')"
       />
@@ -65,6 +65,7 @@ export default {
       loading: false,
       isHeroVisible: true,
       isSrabVisible: false,
+      twitch: null,
     }
   },
   computed: {
