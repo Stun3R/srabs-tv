@@ -19,15 +19,17 @@
       <Ping v-if="twitch.isLive" />
     </h3>
 
-    <div class="flex flex-col mt-2 md:flex-row">
-      <twitch-player
-        width="100%"
-        height="100%"
-        class="w-full h-[200px] sm:h-[324px] md:h-[396px] lg:h-[342px] col-span-2"
-        :channel="channel"
-        :plays-inline="true"
-      />
-    </div>
+    <client-only>
+      <div class="flex flex-col mt-2 md:flex-row">
+        <twitch-player
+          width="100%"
+          height="100%"
+          class="w-full h-[200px] sm:h-[324px] md:h-[396px] lg:h-[342px] col-span-2"
+          :channel="channel"
+          :plays-inline="true"
+        />
+      </div>
+    </client-only>
   </div>
 </template>
 
