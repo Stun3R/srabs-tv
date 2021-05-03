@@ -4,7 +4,6 @@
   "private": true,
   "scripts": {
     "dev": "nuxt",
-    "dev:api": "NODE_ENV=production STRAPI_URL=https://srabs-tv-api.herokuapp.com/ nuxt",
     "build": "nuxt build",
     "start": "nuxt start",
     "generate": "nuxt generate",
@@ -27,7 +26,6 @@
     "@nuxtjs/strapi": "^0.3.1",
     "axios": "^0.21.1",
     "core-js": "^3.9.1",
-    "glob": "^7.1.6",
     "nuxt": "^2.15.3",
     "vue-scrollto": "^2.20.0"
   },

@@ -27,8 +27,8 @@
           :key="srab.id"
           :src="
             index !== 1
-              ? `${$config.imageUrl}${srab.memoji.default.url}`
-              : `${$config.imageUrl}${srab.memoji.smile.url}`
+              ? `${$config.apiUrl}${srab.memoji.default.url}`
+              : `${$config.apiUrl}${srab.memoji.smile.url}`
           "
           alt=""
           draggable="false"
@@ -44,9 +44,11 @@
     </div>
     <div
       class="inline-flex items-center bg-srabs-300 text-white text-sm mt-8 mx-auto py-2.5 px-6 rounded-3xl select-none cursor-pointer focus:outline-none hover:bg-srabs-400 active:bg-srabs-400"
+      :class="{ 'cursor-not-allow': loading, disabled: loading }"
       style="transition: background-color 0.4s ease"
       @click="$emit('show:srab')"
     >
+      <IconsLoading v-if="loading" />
       Découvrir {{ srabs[1].nickname }}
     </div>
   </div>
@@ -62,6 +64,10 @@ export default {
     isHeroVisible: {
       type: Boolean,
       default: true,
+    },
+    loading: {
+      type: Boolean,
+      default: false,
     },
   },
 }

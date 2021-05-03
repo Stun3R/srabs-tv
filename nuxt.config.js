@@ -5,15 +5,16 @@ export default {
   target: 'static',
 
   publicRuntimeConfig: {
-    imageUrl:
-      process.env.NODE_ENV === 'development' ? 'http://localhost:1337' : '',
+    apiUrl: process.env.STRAPI_URL || 'http://localhost:1337',
   },
 
   generate: {
     fallback: true,
     async routes() {
       const response = await axios.get(
-        'https://srabs-tv-api.herokuapp.com/srabs?_sort=id:ASC'
+        `${
+          process.env.STRAPI_URL || 'http://localhost:1337'
+        }/srabs?_sort=id:ASC`
       )
       return [{ route: '/', payload: response.data }]
     },
@@ -90,7 +91,7 @@ export default {
   },
 
   strapi: {
-    entities: ['srabs'],
+    entities: ['srabs', 'twitch'],
   },
 
   sitemap: () => {

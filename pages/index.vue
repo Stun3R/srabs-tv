@@ -11,8 +11,9 @@
     <Hero
       v-show="isHeroVisible"
       :srabs="srabs"
+      :loading="loading"
       @rotate:srabs="rotateSrabs"
-      @show:srab="scrollTo('#details')"
+      @show:srab="showSrab"
     />
     <section
       v-show="isSrabVisible"
@@ -35,7 +36,7 @@
         v-if="isSrabVisible"
         class="col-span-1 md:col-span-2"
         :channel="srabs[1].channel"
-        :twitch="srabs[1].twitch"
+        :twitch="twitch"
       />
 
       <div class="text-center dark:text-white">
@@ -56,17 +57,12 @@
 <script>
 export default {
   async asyncData({ payload, $strapi }) {
-    if (payload) return { srabs: payload }
-    else if (
-      process.env.NODE_ENV === 'development' ||
-      (process.env.NODE_ENV === 'production' && process.env.STRAPI_URL)
-    ) {
-      const srabs = await $strapi.$srabs.find()
-      return { srabs }
-    }
+    const srabs = await $strapi.$srabs.find()
+    return { srabs }
   },
   data() {
     return {
+      loading: false,
       isHeroVisible: true,
       isSrabVisible: false,
     }
@@ -77,6 +73,13 @@ export default {
     },
   },
   methods: {
+    async showSrab() {
+      this.loading = true
+      const twitch = await this.$strapi.$twitch.findOne(this.srabs[1].id)
+      this.twitch = twitch
+      this.loading = false
+      this.scrollTo('#details')
+    },
     rotateSrabs(index) {
       const tmp = [...this.srabs]
       if (index === 0) {

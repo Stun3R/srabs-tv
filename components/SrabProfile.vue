@@ -19,7 +19,7 @@
     </div>
 
     <img
-      :src="`${$config.imageUrl}${srab.memoji.default.url}`"
+      :src="`${$config.apiUrl}${srab.memoji.default.url}`"
       draggable="false"
       class="object-contain mx-auto mt-8 h-28 w-28"
       alt=""
