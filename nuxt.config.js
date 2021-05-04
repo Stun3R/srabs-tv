@@ -3,10 +3,10 @@ export default {
   mode: 'universal',
 
   publicRuntimeConfig: {
-    apiUrl:
-      process.env.NODE_ENV === 'production' || process.env.STRAPI_URL
-        ? ''
-        : 'http://localhost:1337',
+    imageUrl:
+      process.env.NODE_ENV === 'development' || !process.env.STRAPI_URL
+        ? 'http://localhost:1337'
+        : '',
   },
 
   // Global page headers: https://go.nuxtjs.dev/config-head
