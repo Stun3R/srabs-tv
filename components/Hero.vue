@@ -27,8 +27,8 @@
           :key="srab.id"
           :src="
             index !== 1
-              ? `${$config.apiUrl}${srab.memoji.default.url}`
-              : `${$config.apiUrl}${srab.memoji.smile.url}`
+              ? `${$config.imageUrl}${srab.memoji.default.url}`
+              : `${$config.imageUrl}${srab.memoji.smile.url}`
           "
           alt=""
           draggable="false"

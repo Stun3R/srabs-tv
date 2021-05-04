@@ -4,7 +4,8 @@ export default {
 
   publicRuntimeConfig: {
     imageUrl:
-      process.env.NODE_ENV === 'development' || !process.env.STRAPI_URL
+      !process.env.STRAPI_URL ||
+      process.env.STRAPI_URL === 'http://localhost:1337'
         ? 'http://localhost:1337'
         : '',
   },

@@ -15,14 +15,14 @@
             :style="{ 'background-color': game.color }"
           >
             <img
-              :src="`${$config.apiUrl}${game.overlay.url}`"
+              :src="`${$config.imageUrl}${game.overlay.url}`"
               class="object-contain w-32 m-auto"
               alt=""
             />
           </div>
           <img
             class="object-cover h-full rounded-lg"
-            :src="`${$config.apiUrl}${game.image.url}`"
+            :src="`${$config.imageUrl}${game.image.url}`"
             alt=""
           />
         </div>
