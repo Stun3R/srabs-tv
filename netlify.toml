@@ -1,5 +1,0 @@
-[context.develop.environment]
-    NODE_ENV = "staging"
-
-[context.deploy-preview.environment]
-    NODE_ENV = "staging"
