@@ -1,6 +1,6 @@
 export default {
   // Target: https://go.nuxtjs.dev/config-target
-  mode: 'universal',
+  target: 'server',
 
   publicRuntimeConfig: {
     imageUrl:
