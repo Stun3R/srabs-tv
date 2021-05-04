@@ -3,7 +3,10 @@ export default {
   mode: 'universal',
 
   publicRuntimeConfig: {
-    apiUrl: process.env.STRAPI_URL || 'http://localhost:1337',
+    apiUrl:
+      process.env.NODE_ENV === 'production' || process.env.STRAPI_URL
+        ? ''
+        : 'http://localhost:1337',
   },
 
   // Global page headers: https://go.nuxtjs.dev/config-head
@@ -44,7 +47,7 @@ export default {
   css: ['@/assets/css/poppins.css'],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [],
+  plugins: ['~/plugins/loaderscript.client.js'],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,

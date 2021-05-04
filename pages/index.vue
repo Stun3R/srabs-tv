@@ -57,8 +57,13 @@
 <script>
 export default {
   async asyncData({ payload, $strapi }) {
-    const srabs = await $strapi.$srabs.find()
-    return { srabs }
+    try {
+      const srabs = await $strapi.$srabs.find()
+      return { srabs }
+    } catch (e) {
+      console.log(e)
+      return {}
+    }
   },
   data() {
     return {
