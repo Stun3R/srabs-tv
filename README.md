@@ -1,4 +1,4 @@
-[![srabs-tv](https://srabs-tv.netlify.app/preview.png)](https://srabs-tv.netlify.app)
+[![srabs-tv][website-src]][website-href]
 
 # Srabs TV
 
@@ -8,8 +8,10 @@
 - ✨ Discover wonderful information about him
 - 🎬 Play with Twitch player & Dark mode
 
-[🖥 &nbsp;Check it out](https://srabs-tv.netlify.app)
+[🖥 &nbsp;Check it out][website-href]
 
 <!-- Badges -->
 [standard-src]: https://img.shields.io/badge/code_style-standard-brightgreen.svg?style=flat-square
 [standard-href]: https://standardjs.com
+[website-href]: https://srabs-tv.herokuapp.com
+[website-src]: https://srabs-tv.herokuapp.com/preview.png

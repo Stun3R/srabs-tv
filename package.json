@@ -78,7 +78,7 @@
   "bugs": {
     "url": "https://github.com/Stun3R/srabs-tv/issues"
   },
-  "homepage": "https://srabs-tv.netlify.app",
+  "homepage": "https://srabs-tv.herokuapp.com",
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
