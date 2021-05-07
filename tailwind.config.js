@@ -3,14 +3,6 @@ const colors = require('tailwindcss/colors')
 module.exports = {
   mode: 'jit',
   darkMode: 'class',
-  purge: [
-    '~/components/**/*.{vue,js}',
-    '~/layouts/**/*.vue',
-    '~/pages/**/*.vue',
-    '~/plugins/**/*.{js,ts}',
-    '~/store/**/*.{js,ts}',
-    '~/nuxt.config.{js,ts}',
-  ],
   theme: {
     colors: {
       // Build your palette here

@@ -58,10 +58,9 @@
 export default {
   async asyncData({ payload, $strapi }) {
     try {
-      const srabs = await $strapi.$srabs.find()
+      const srabs = await $strapi.$srabs.find({ _sort: 'id:ASC' })
       return { srabs }
     } catch (e) {
-      console.log(e)
       return {}
     }
   },
